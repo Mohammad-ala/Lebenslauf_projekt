@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=initial-scale=1.0, initial-scale=1.0">
+    <title>HTML/CSS-Quiz-Mohammad</title>
+    <link rel="stylesheet" href="quiz-style.css">
+</head>
+<body>
+     <div class="quiz-container">
+    <h1>HTML & CSS Quiz</h1>
+    
+    <form id="quizForm">
+      <div class="quiz-question">
+        <p><strong>1. Was bedeutet das HTML-Element <code>&lt;a&gt;</code>?</strong></p>
+        <label><input type="radio" name="q1" value="A"> Absatz</label><br />
+        <label><input type="radio" name="q1" value="B"> Überschrift</label><br />
+        <label><input type="radio" name="q1" value="C"> Link</label><br />
+        <label><input type="radio" name="q1" value="D"> Bild</label>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>2. Welche CSS-Eigenschaft verändert die Schriftfarbe?</strong></p>
+        <label><input type="radio" name="q2" value="A"> background-color</label><br />
+        <label><input type="radio" name="q2" value="B"> font-weight</label><br />
+        <label><input type="radio" name="q2" value="C"> color</label><br />
+        <label><input type="radio" name="q2" value="D"> text-align</label>
+      </div>
+
+      <div class="quiz-question">
+        <p><strong>3. Welcher Tag definiert den Hauptinhalt einer HTML-Seite?</strong></p>
+        <label><input type="radio" name="q3" value="A"> &lt;header&gt;</label><br />
+        <label><input type="radio" name="q3" value="B"> &lt;section&gt;</label><br />
+        <label><input type="radio" name="q3" value="C"> &lt;main&gt;</label><br />
+        <label><input type="radio" name="q3" value="D"> &lt;body&gt;</label>
+      </div>
+
+      <div>
+        <p><strong>1. Wie viele Geschwister hat Mohammad?</strong></p>
+        <label><input type="radio" name="q1" value="A"> Zwei</label>
+        <label><input type="radio" name="q1" value="B"> Fünf</label>
+        <label><input type="radio" name="q1" value="C"> Acht</label>
+      </div>
+
+      <div>
+        <p><strong>2. Wie alt ist Mohammad, wenn er 2005 geboren ist?</strong></p>
+        <label><input type="radio" name="q2" value="A"> 18 Jahre</label>
+        <label><input type="radio" name="q2" value="B"> 20 Jahre</label>
+        <label><input type="radio" name="q2" value="C"> 22 Jahre</label>
+      </div>
+
+      <div>
+        <p><strong>3. Was zählt zu Mohammads Stärken?</strong></p>
+        <label><input type="radio" name="q3" value="A"> Chaos und Vergesslichkeit</label>
+        <label><input type="radio" name="q3" value="B"> Organisation und Disziplin</label>
+        <label><input type="radio" name="q3" value="C"> Faulheit und Unruhe</label>
+      </div>
+
+      <div>
+        <p><strong>4. Wie belegt Mohammad seine Zuverlässigkeit im Alltag?</strong></p>
+        <label><input type="radio" name="q4" value="A"> Er schläft bis mittags</label>
+        <label><input type="radio" name="q4" value="B"> Er kümmert sich regelmäßig um seine Geschwister</label>
+        <label><input type="radio" name="q4" value="C"> Er ignoriert Verantwortung</label>
+      </div>
+
+      <div>
+        <p><strong>5. Was lernt Mohammad gerade?</strong></p>
+        <label><input type="radio" name="q5" value="A"> Java & Python</label>
+        <label><input type="radio" name="q5" value="B"> HTML, CSS und JavaScript</label>
+        <label><input type="radio" name="q5" value="C"> C# & Ruby</label>
+      </div>
+
+      <button type="submit">Auswerten</button>
+    </form>
+
+    <p id="quizResult" class="quiz-footer"></p>
+  </div>
+
+  <section id="quiz" class="versteckt">
+  <h2>Quiz über mich 🎯</h2>
+  <form id="quizForm">
+    <!-- ... deine Fragen hier ... -->
+    <button type="submit">Auswerten</button>
+  </form>
+  <p id="quizResult" class="quiz-footer"></p>
+</section>
+
+</body>
+<script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const answers = {
+        q1: 'C',
+        q2: 'C',
+        q3: 'C'
+      };
+      let score = 0;
+      const formData = new FormData(this);
+      for (let [key, value] of formData.entries()) {
+        if (answers[key] === value) {
+          score++;
+        }
+      }
+      const resultText = 'Du hast ' + score + ' von 3 Punkten erreicht.';
+      document.getElementById('quizResult').textContent = resultText;
+    });
+
+<!--Antworten auf die fragen-->
+
+  document.getElementById('quizForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const correctAnswers = {
+      q1: 'B', // 5 Geschwister
+      q2: 'B', // 20 Jahre
+      q3: 'B', // Organisation & Disziplin
+      q4: 'B', // kümmert sich um Geschwister
+      q5: 'B'  // HTML, CSS, JavaScript
+    };
+
+    let score = 0;
+    const formData = new FormData(this);
+
+    for (let [frage, antwort] of formData.entries()) {
+      if (correctAnswers[frage] === antwort) score++;
+    }
+
+    document.getElementById('quizResult').textContent =
+      'Du hast ' + score + ' von 5 Punkten erreicht.';
+  });
+
+</script>
+</html>
